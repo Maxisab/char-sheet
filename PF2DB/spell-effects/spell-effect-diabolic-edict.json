@@ -1,0 +1,101 @@
+{
+    "_id": "1kelGCsoXyGRqMd9",
+    "img": "systems/pf2e/icons/spells/diabolic-edict.webp",
+    "name": "Spell Effect: Diabolic Edict",
+    "system": {
+        "description": {
+            "value": "<p>Granted by @UUID[Compendium.pf2e.spells-srd.Item.Diabolic Edict]</p>"
+        },
+        "duration": {
+            "expiry": "turn-start",
+            "sustained": false,
+            "unit": "rounds",
+            "value": 1
+        },
+        "level": {
+            "value": 1
+        },
+        "publication": {
+            "license": "ORC",
+            "remaster": true,
+            "title": "Pathfinder Player Core 2"
+        },
+        "rules": [
+            {
+                "choices": [
+                    {
+                        "label": "Accept",
+                        "value": "1"
+                    },
+                    {
+                        "label": "Refuse",
+                        "value": "-1"
+                    }
+                ],
+                "flag": "edict",
+                "key": "ChoiceSet",
+                "prompt": "PF2E.SpecificRule.Sorcerer.DiabolicEdict.Prompt"
+            },
+            {
+                "domain": "all",
+                "key": "RollOption",
+                "label": "PF2E.SpecificRule.Sorcerer.DiabolicEdict.Label",
+                "option": "diabolic-edict-agree",
+                "predicate": [
+                    {
+                        "gte": [
+                            "{item|flags.pf2e.rulesSelections.edict}",
+                            1
+                        ]
+                    }
+                ],
+                "toggleable": true
+            },
+            {
+                "hideIfDisabled": true,
+                "key": "FlatModifier",
+                "label": "PF2E.SpecificRule.Sorcerer.DiabolicEdict.Bonus",
+                "predicate": [
+                    "diabolic-edict-agree"
+                ],
+                "selector": [
+                    "attack",
+                    "skill-check"
+                ],
+                "type": "status",
+                "value": "{item|flags.pf2e.rulesSelections.edict}"
+            },
+            {
+                "hideIfDisabled": true,
+                "key": "FlatModifier",
+                "label": "PF2E.SpecificRule.Sorcerer.DiabolicEdict.Penalty",
+                "predicate": [
+                    {
+                        "lt": [
+                            "{item|flags.pf2e.rulesSelections.edict}",
+                            1
+                        ]
+                    }
+                ],
+                "selector": [
+                    "attack",
+                    "skill-check"
+                ],
+                "type": "status",
+                "value": "{item|flags.pf2e.rulesSelections.edict}"
+            }
+        ],
+        "start": {
+            "initiative": null,
+            "value": 0
+        },
+        "tokenIcon": {
+            "show": true
+        },
+        "traits": {
+            "rarity": "common",
+            "value": []
+        }
+    },
+    "type": "effect"
+}

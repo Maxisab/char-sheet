@@ -1,0 +1,52 @@
+{
+    "_id": "WRvZ2Nq3wquisD4Y",
+    "img": "systems/pf2e/icons/unarmed-attacks/tongue.webp",
+    "name": "Effect: Pickled Demon Tongue - Armor",
+    "system": {
+        "description": {
+            "value": "<p>Granted by @UUID[Compendium.pf2e.equipment-srd.Item.Pickled Demon Tongue]</p>\n<p>You gain resistance 2 to acid and attacks by demons.</p>"
+        },
+        "duration": {
+            "expiry": null,
+            "sustained": false,
+            "unit": "unlimited",
+            "value": -1
+        },
+        "level": {
+            "value": 1
+        },
+        "publication": {
+            "license": "OGL",
+            "remaster": false,
+            "title": "Pathfinder #188: They Watched the Stars"
+        },
+        "rules": [
+            {
+                "key": "Resistance",
+                "type": "acid",
+                "value": 2
+            },
+            {
+                "definition": [
+                    "origin:action:trait:attack",
+                    "origin:trait:demon"
+                ],
+                "key": "Resistance",
+                "label": "PF2E.IWR.Custom.AttacksDemons",
+                "type": "custom",
+                "value": 2
+            }
+        ],
+        "start": {
+            "initiative": null,
+            "value": 0
+        },
+        "tokenIcon": {
+            "show": true
+        },
+        "traits": {
+            "value": []
+        }
+    },
+    "type": "effect"
+}

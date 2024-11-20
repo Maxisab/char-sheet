@@ -1,0 +1,125 @@
+{
+    "_id": "8foxmfC6FFT3oYpV",
+    "img": "icons/sundries/books/book-red-exclamation.webp",
+    "name": "Sentinel Dedication",
+    "system": {
+        "actionType": {
+            "value": "passive"
+        },
+        "actions": {
+            "value": null
+        },
+        "category": "class",
+        "description": {
+            "value": "<p>You have trained carefully to maximize the protective qualities of your armor. You become trained in light armor and medium armor. If you already were trained in light armor and medium armor, you gain training in heavy armor as well. Whenever you gain a class feature that grants you expert or greater proficiency in any type of armor (but not unarmored defense), you also gain that proficiency in the armor types granted to you by this feat. If you have a class feature that grants you expert proficiency in unarmored defense and you're 13th level or higher, you also become an expert in the armor types granted to you by this feat.</p>\n<p>@UUID[Compendium.pf2e.journals.JournalEntry.vx5FGEG34AxI2dow.JournalEntryPage.TnD2hTWTyjGKlw9b]{Sentinel}</p>"
+        },
+        "level": {
+            "value": 2
+        },
+        "prerequisites": {
+            "value": []
+        },
+        "publication": {
+            "license": "ORC",
+            "remaster": true,
+            "title": "Pathfinder Player Core 2"
+        },
+        "rules": [
+            {
+                "key": "ActiveEffectLike",
+                "mode": "upgrade",
+                "path": "system.proficiencies.defenses.medium.rank",
+                "priority": 41,
+                "value": {
+                    "brackets": [
+                        {
+                            "end": 12,
+                            "value": "max(1,@actor.system.proficiencies.defenses.light.rank)"
+                        },
+                        {
+                            "start": 13,
+                            "value": "max(1,@actor.system.proficiencies.defenses.light.rank,min(2,@actor.system.proficiencies.defenses.unarmored.rank))"
+                        }
+                    ]
+                }
+            },
+            {
+                "key": "ActiveEffectLike",
+                "mode": "upgrade",
+                "path": "system.proficiencies.defenses.light.rank",
+                "priority": 41,
+                "value": {
+                    "brackets": [
+                        {
+                            "end": 12,
+                            "value": 1
+                        },
+                        {
+                            "start": 13,
+                            "value": "max(1,min(2,@actor.system.proficiencies.defenses.unarmored.rank))"
+                        }
+                    ]
+                }
+            },
+            {
+                "adjustName": false,
+                "choices": [
+                    {
+                        "label": "PF2E.Actor.Character.Proficiency.Defense.LightShort",
+                        "predicate": [
+                            {
+                                "or": [
+                                    "defense:light:rank:0",
+                                    "defense:medium:rank:0"
+                                ]
+                            }
+                        ],
+                        "value": 0
+                    },
+                    {
+                        "label": "PF2E.Actor.Character.Proficiency.Defense.HeavyShort",
+                        "predicate": [
+                            {
+                                "nor": [
+                                    "defense:light:rank:0",
+                                    "defense:medium:rank:0"
+                                ]
+                            }
+                        ],
+                        "value": 1
+                    }
+                ],
+                "flag": "armor",
+                "key": "ChoiceSet"
+            },
+            {
+                "key": "ActiveEffectLike",
+                "mode": "upgrade",
+                "path": "system.proficiencies.defenses.heavy.rank",
+                "value": "@item.flags.pf2e.rulesSelections.armor"
+            },
+            {
+                "key": "ActiveEffectLike",
+                "mode": "upgrade",
+                "path": "system.proficiencies.defenses.heavy.rank",
+                "predicate": [
+                    {
+                        "nor": [
+                            "defense:light:rank:0",
+                            "defense:medium:rank:0"
+                        ]
+                    }
+                ],
+                "value": 1
+            }
+        ],
+        "traits": {
+            "rarity": "common",
+            "value": [
+                "archetype",
+                "dedication"
+            ]
+        }
+    },
+    "type": "feat"
+}
