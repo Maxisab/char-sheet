@@ -1,20 +1,21 @@
+import { ClassData } from "../Types/classTypes"
+const classFiles = import.meta.glob('../data/classes/*.json', { eager: true });
+
 
 export const CharMenu = () => {
 
+  const classes: ClassData[] = Object.values(classFiles).map(file => file as ClassData);
+
   return (
     <div className="text-blue-500 *:h-20 flex-col *:flex *:justify-center *:items-center">
-    <div className="alchemist bg-amber-400">Alchemist</div>
-    <div className="barbarian bg-red-400">Barbarian</div>
-    <div className="bard">Bard</div>
-    <div className="champion">Champion</div>
-    <div className="cleric">Cleric</div>
-    <div className="druid">Druid</div>
-    <div className="Fighter">Fighter</div>
-    <div className="Monk">Monk</div>
-    <div className="Ranger">Ranger</div>
-    <div className="Rogue">Rogue</div>
-    <div className="Sorcerer">Sorcerer</div>
-    <div className="Wizard">Wizard</div>
+      {classes.map((classData) => (
+        <div 
+          key={classData.name.toLowerCase()} 
+          className={classData.name.toLowerCase()}
+        >
+          {classData.name}
+        </div>
+      ))}
     </div>
   )
 }
