@@ -1,4 +1,6 @@
-export const Cards = () => {
+
+export const CharMenu = () => {
+
   return (
     <div className="text-blue-500 *:h-20 flex-col *:flex *:justify-center *:items-center">
     <div className="alchemist bg-amber-400">Alchemist</div>

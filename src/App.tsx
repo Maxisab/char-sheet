@@ -1,4 +1,4 @@
-import { Cards } from './Cards/Cards'
+import { CharMenu } from './Components/CharMenu'
 import { Nav } from './Navbar/Nav'
 
 function App() {
@@ -6,7 +6,7 @@ function App() {
   return (
     <>
       <Nav />
-      <Cards />
+      <CharMenu />
     </>
   )
 }
