@@ -8,7 +8,7 @@ interface ClassMenuProps {
   filterClasses: boolean;
 }
 
-const ClassMenu: React.FC<ClassMenuProps> = ({ filterClasses }) => {
+const ClassMenu = ({ filterClasses }: ClassMenuProps) => {
   const [selectedClass, setSelectedClass] = useState<string | null>(null);
   const classes: ClassData[] = Object.values(classFiles)
     .map(file => file as ClassData)

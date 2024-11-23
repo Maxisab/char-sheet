@@ -3,7 +3,7 @@ interface NavProps {
   setFilterClasses: (value: boolean) => void;
 }
 
-export const Nav: React.FC<NavProps> = ({ filterClasses, setFilterClasses }) => {
+export const Nav = ({ filterClasses, setFilterClasses }: NavProps) => {
   const handleToggle = () => setFilterClasses(!filterClasses);
 
   return (
