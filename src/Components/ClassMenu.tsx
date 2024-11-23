@@ -4,9 +4,17 @@ import { classColors } from "../utils/classColors";
 
 const classFiles = import.meta.glob('../data/classes/*.json', { eager: true });
 
-const ClassMenu = () => {
+interface ClassMenuProps {
+  filterClasses: boolean;
+}
+
+const ClassMenu: React.FC<ClassMenuProps> = ({ filterClasses }) => {
   const [selectedClass, setSelectedClass] = useState<string | null>(null);
-  const classes: ClassData[] = Object.values(classFiles).map(file => file as ClassData);
+  const classes: ClassData[] = Object.values(classFiles)
+    .map(file => file as ClassData)
+    .filter(classData =>
+      filterClasses ? classData.system.publication.title === "Pathfinder Core Rulebook 2E" : true
+    );
 
   const handleClassClick = (className: string) => {
     setSelectedClass(selectedClass === className ? null : className);
