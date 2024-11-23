@@ -1,4 +1,5 @@
-import { CharMenu } from './Components/CharMenu'
+
+import ClassMenu from './Components/ClassMenu'
 import { Nav } from './Navbar/Nav'
 
 function App() {
@@ -6,7 +7,7 @@ function App() {
   return (
     <>
       <Nav />
-      <CharMenu />
+      <ClassMenu />
     </>
   )
 }
