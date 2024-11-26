@@ -8,9 +8,9 @@ export const Nav = ({ filterClasses, setFilterClasses }: NavProps) => {
 
   return (
     <div className="flex items-center justify-between bg-gray-800 p-4 text-white">
-      <h1 className="text-lg font-bold">Class Menu</h1>
+      <h1 className="text-lg font-bold">Select a class</h1>
       <div className="flex items-center gap-4">
-        <span>Filter Core Classes</span>
+        <span>Filter Remaster</span>
         <label className="relative inline-flex items-center cursor-pointer">
           <input
             type="checkbox"

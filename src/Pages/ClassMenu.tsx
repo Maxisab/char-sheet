@@ -13,12 +13,14 @@ const ClassMenu = ({ filterClasses }: ClassMenuProps) => {
   const classes: ClassData[] = Object.values(classFiles)
     .map(file => file as ClassData)
     .filter(classData =>
-      filterClasses ? classData.system.publication.title === "Pathfinder Core Rulebook 2E" : true
+      filterClasses ? classData.system.publication.remaster === true : true
     );
 
   const handleClassClick = (className: string) => {
     setSelectedClass(selectedClass === className ? null : className);
   };
+
+  // const handleClassSelect = 
 
   // Helper function to format key ability when two are present
   const formatKeyAbility = (keyAbility: { value: string[] }) => {
@@ -70,7 +72,7 @@ const removeLastPTag = (htmlString: string): string => {
                       Key Ability: {formatKeyAbility(classData.system.keyAbility)}
                     </div>
                     <div className="font-medium">
-                      Starting Hit Points: {classData.system.hp}
+                      {`Hit Points: ${classData.system.hp} + CON modifier`}
                     </div>
                     <div 
                       className="text-sm"
@@ -78,6 +80,12 @@ const removeLastPTag = (htmlString: string): string => {
                         __html: removeLastPTag(classData.system.description.value) 
                       }}
                     />
+                    <div 
+                      className="btn text-center py-3 mx-[30%] border-black border-4 rounded-3xl bg-white"
+                      
+                    >
+                      <span>Select Class</span>
+                    </div>
                   </div>
                 </div>
               )}
