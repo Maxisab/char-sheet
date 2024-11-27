@@ -9,7 +9,7 @@ function App() {
   return (
     <>
       <Nav filterClasses={filterClasses} setFilterClasses={setFilterClasses} />
-      <Outlet />
+      <Outlet context={{ filterClasses, setFilterClasses }}/>
     </>
   )
 }

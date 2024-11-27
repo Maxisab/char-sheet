@@ -19,7 +19,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/class-menu",
-        element: <ClassMenu filterClasses/>
+        element: <ClassMenu />
       }
     ]
   }

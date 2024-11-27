@@ -1,15 +1,13 @@
 import { useState } from 'react';
 import { ClassData } from "../Types/classTypes";
 import { classColors } from "../utils/classColors";
+import { useOutletContext } from 'react-router-dom';
 
 const classFiles = import.meta.glob('../data/classes/*.json', { eager: true });
 
-interface ClassMenuProps {
-  filterClasses: boolean;
-}
-
-const ClassMenu = ({ filterClasses }: ClassMenuProps) => {
+const ClassMenu = () => {
   const [selectedClass, setSelectedClass] = useState<string | null>(null);
+  const { filterClasses } =useOutletContext<{filterClasses: boolean}>()
   const classes: ClassData[] = Object.values(classFiles)
     .map(file => file as ClassData)
     .filter(classData =>
