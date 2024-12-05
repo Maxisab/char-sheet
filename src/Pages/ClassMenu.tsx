@@ -37,7 +37,7 @@ const removeLastPTag = (htmlString: string): string => {
 };
 
   return (
-    <div className={`relative min-h-screen transition-all duration-300 ease-in-out ${selectedClass ? 'lg:grid lg:grid-cols-3' : ''}`}>
+    <div className={`relative min-h-screen transition-all duration-300 ease-in-out mt-[60px] ${selectedClass ? 'lg:grid lg:grid-cols-3' : ''}`}>
       {/* Classes List */}
       <div className={`transition-all duration-300 ease-in-out ${selectedClass ? 'lg:col-span-1' : 'lg:px-[25%]'}`}>
         <div className="text-black flex-col">
