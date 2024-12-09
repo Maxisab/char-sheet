@@ -1,12 +1,13 @@
 import { useState } from 'react';
 import { ClassData } from "../Types/classTypes";
 import { classColors } from "../utils/classColors";
-import { useOutletContext } from 'react-router-dom';
-
+import { Link, useOutletContext } from 'react-router-dom';
+import { useClassContext } from '../Hooks/useClassContext';
 const classFiles = import.meta.glob('../data/classes/*.json', { eager: true });
 
 const ClassMenu = () => {
-  const [selectedClass, setSelectedClass] = useState<string | null>(null);
+  const [expandedClass, setExpandedClass] = useState<string | null>(null);
+  const { setSelectedClass } = useClassContext()
   const { filterClasses } =useOutletContext<{filterClasses: boolean}>()
   const classes: ClassData[] = Object.values(classFiles)
     .map(file => file as ClassData)
@@ -15,7 +16,7 @@ const ClassMenu = () => {
     );
 
   const handleClassClick = (className: string) => {
-    setSelectedClass(selectedClass === className ? null : className);
+    setExpandedClass(expandedClass === className ? null : className);
   };
 
   // const handleClassSelect = 
@@ -37,9 +38,9 @@ const removeLastPTag = (htmlString: string): string => {
 };
 
   return (
-    <div className={`relative min-h-screen transition-all duration-300 ease-in-out mt-[60px] ${selectedClass ? 'lg:grid lg:grid-cols-3' : ''}`}>
+    <div className={`relative min-h-screen transition-all duration-300 ease-in-out mt-[60px] ${expandedClass ? 'lg:grid lg:grid-cols-3' : ''}`}>
       {/* Classes List */}
-      <div className={`transition-all duration-300 ease-in-out ${selectedClass ? 'lg:col-span-1' : 'lg:px-[25%]'}`}>
+      <div className={`transition-all duration-300 ease-in-out ${expandedClass ? 'lg:col-span-1' : 'lg:px-[25%]'}`}>
         <div className="text-black flex-col">
           {classes.map((classData) => (
             <div
@@ -50,7 +51,7 @@ const removeLastPTag = (htmlString: string): string => {
                 p-4 bg-opacity-65
                 flex flex-col cursor-pointer
                 transition-all duration-300 ease
-                ${selectedClass === classData.name.toLowerCase() ? 'min-h-fit' : 'h-20'}
+                ${expandedClass === classData.name.toLowerCase() ? 'min-h-fit' : 'h-20'}
               `}
             >
               <div className="flex justify-between items-center">
@@ -58,12 +59,12 @@ const removeLastPTag = (htmlString: string): string => {
                   <span className="text-lg font-semibold">{classData.name}</span>
                 </div>
                 <span className="transform transition-transform duration-300">
-                  {selectedClass === classData.name.toLowerCase() ? '▼' : '▶'}
+                  {expandedClass === classData.name.toLowerCase() ? '▼' : '▶'}
                 </span>
               </div>
               
               {/* Expandable Content - Mobile View */}
-              {selectedClass === classData.name.toLowerCase() && (
+              {expandedClass === classData.name.toLowerCase() && (
                 <div className="mt-4 lg:hidden">
                   <div className="space-y-4">
                     <div className="font-medium">
@@ -82,7 +83,13 @@ const removeLastPTag = (htmlString: string): string => {
                       className="btn text-center py-3 mx-[30%] border-black border-4 rounded-3xl bg-white"
                       
                     >
-                      <span>Select Class</span>
+                      <Link 
+                        to="/character-sheet"
+                        state={{ expandedClass: classData }}
+                        onClick={() => setSelectedClass(classData)}
+                      >
+                        Select Class
+                      </Link>
                     </div>
                   </div>
                 </div>
@@ -93,10 +100,10 @@ const removeLastPTag = (htmlString: string): string => {
       </div>
 
       {/* Details Panel - Desktop View */}
-      {selectedClass && (
+      {expandedClass && (
         <div className="hidden lg:block lg:col-span-2 p-6 bg-gray-50">
           {classes.map((classData) => 
-            classData.name.toLowerCase() === selectedClass && (
+            classData.name.toLowerCase() === expandedClass && (
               <div key={`details-${classData.name}`} className="space-y-6">
                 <div className="flex items-center gap-4">
                   <h2 className="text-2xl font-bold">{classData.name}</h2>

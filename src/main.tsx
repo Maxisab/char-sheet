@@ -6,6 +6,8 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import { ErrorPage } from './Pages/ErrorPage.tsx'
 import { Home } from './Pages/Home.tsx'
 import ClassMenu from './Pages/ClassMenu.tsx'
+import { CharacterSheet } from './Pages/CharacterSheet.tsx'
+import { ClassProvider } from './Context/ClassProvider.tsx'
 
 const router = createBrowserRouter([
   {
@@ -20,6 +22,10 @@ const router = createBrowserRouter([
       {
         path: "/class-menu",
         element: <ClassMenu />
+      },
+      {
+        path: "/character-sheet",
+        element: <CharacterSheet />
       }
     ]
   }
@@ -27,6 +33,8 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <ClassProvider>
+      <RouterProvider router={router} />
+    </ClassProvider>
   </StrictMode>,
 )
