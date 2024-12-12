@@ -8,7 +8,7 @@ const classFiles = import.meta.glob('../data/classes/*.json', { eager: true });
 const ClassMenu = () => {
   const [expandedClass, setExpandedClass] = useState<string | null>(null);
   const { setSelectedClass } = useClassContext()
-  const { filterClasses } =useOutletContext<{filterClasses: boolean}>()
+  const { filterClasses } = useOutletContext<{filterClasses: boolean}>()
   const classes: ClassData[] = Object.values(classFiles)
     .map(file => file as ClassData)
     .filter(classData =>
@@ -18,8 +18,6 @@ const ClassMenu = () => {
   const handleClassClick = (className: string) => {
     setExpandedClass(expandedClass === className ? null : className);
   };
-
-  // const handleClassSelect = 
 
   // Helper function to format key ability when two are present
   const formatKeyAbility = (keyAbility: { value: string[] }) => {
@@ -79,18 +77,13 @@ const removeLastPTag = (htmlString: string): string => {
                         __html: removeLastPTag(classData.system.description.value) 
                       }}
                     />
-                    <div 
-                      className="btn text-center py-3 mx-[30%] border-black border-4 rounded-3xl bg-white"
-                      
+                    <Link 
+                      className="flex justify-center w-1/2 mx-auto py-3 border-black border-4 rounded-2xl bg-white"
+                      to="/character-sheet" 
+                      onClick={() => setSelectedClass(classData)}
                     >
-                      <Link 
-                        to="/character-sheet"
-                        state={{ expandedClass: classData }}
-                        onClick={() => setSelectedClass(classData)}
-                      >
-                        Select Class
-                      </Link>
-                    </div>
+                      Select Class
+                    </Link>
                   </div>
                 </div>
               )}

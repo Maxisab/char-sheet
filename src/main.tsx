@@ -12,7 +12,10 @@ import { ClassProvider } from './Context/ClassProvider.tsx'
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App />,
+    element:
+      <ClassProvider>
+        <App />
+      </ClassProvider>,
     errorElement: <ErrorPage />,
     children: [
       {
@@ -33,8 +36,6 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <ClassProvider>
       <RouterProvider router={router} />
-    </ClassProvider>
   </StrictMode>,
 )

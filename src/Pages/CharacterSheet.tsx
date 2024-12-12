@@ -13,7 +13,7 @@ export const CharacterSheet = () => {
   return (
     <div>
         <div className="genStats">
-            {/* {selectedClass?.system.hp} */}
+            {selectedClass?.name}
         </div>
         <div className="attributes">
 
