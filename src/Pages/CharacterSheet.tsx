@@ -1,24 +1,33 @@
-import { useRef } from "react";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useClassContext } from "../Hooks/useClassContext";
+import AncestryModal from "../Modals/AncestryModal";
 
 export const CharacterSheet = () => {
     const { selectedClass } = useClassContext();
-    const dialogRef = useRef<HTMLDialogElement | null>(null)
+    const [isModalOpen, setIsModalOpen] = useState(false)
 
     useEffect(() => {
         if (!selectedClass) {
             console.log("error: no class selected")
         } else {
-          dialogRef.current?.showModal()
+          setIsModalOpen(true)
         }
-    })
+    }, [selectedClass])
 
   return (
     <>
-      <dialog ref={dialogRef}>
-        Modal test
-      </dialog>
+      <AncestryModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+      >
+        <h2>Test Modal</h2>
+        <p>Here's some text for the test modal</p>
+        <button
+          onClick={() => setIsModalOpen(false)}
+        >
+          Close
+        </button>
+      </AncestryModal>
       <div>
         <div className="genStats">
             {selectedClass?.name}
