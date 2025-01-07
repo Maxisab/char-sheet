@@ -14,7 +14,7 @@ export const Nav = ({ filterClasses, setFilterClasses }: NavProps) => {
       {location.pathname === '/' && (
         <div className="text-center p-4 bg-gray-800 text-primary-parchment fixed top-0 w-full">ClassFinder 2E Remaster</div>
       )}
-      {location.pathname === '/class-menu' && (
+      {location.pathname === '/character-creation' && (
         <div className="flex items-center justify-between bg-gray-800 p-4 text-primary-parchment fixed top-0 w-full z-50">
         <h1 className="text-lg font-bold">Select a class</h1>
         <div className="flex items-center gap-4">

@@ -3,8 +3,8 @@ import { ClassProvider } from "../Context/ClassProvider";
 import App from "../App";
 import { ErrorPage } from "../Pages/ErrorPage";
 import { Home } from "../Pages/Home";
-import ClassMenu from "../Components/ClassMenu";
 import { CharacterSheet } from "../Pages/CharacterSheet";
+import CharacterCreation from "../Pages/CharacterCreation";
 
 
 export const router = createBrowserRouter([
@@ -21,8 +21,8 @@ export const router = createBrowserRouter([
           element: <Home />,
         },
         {
-          path: "/class-menu",
-          element: <ClassMenu />
+          path: "/character-creation",
+          element: <CharacterCreation />
         },
         {
           path: "/character-sheet",
