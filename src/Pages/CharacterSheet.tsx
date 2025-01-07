@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useClassContext } from "../Hooks/useClassContext";
-import AncestryModal from "../Modals/AncestryModal";
+import Modal from "../Modals/Modal";
 
 export const CharacterSheet = () => {
     const { selectedClass } = useClassContext();
@@ -16,7 +16,7 @@ export const CharacterSheet = () => {
 
   return (
     <>
-      <AncestryModal
+      <Modal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
       >
@@ -27,7 +27,7 @@ export const CharacterSheet = () => {
         >
           Close
         </button>
-      </AncestryModal>
+      </Modal>
       <div>
         <div className="genStats">
             {selectedClass?.name}

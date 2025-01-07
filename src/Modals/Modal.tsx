@@ -1,7 +1,7 @@
 import { createPortal } from 'react-dom';
 import { ModalProps } from '../Types/ModalProps';
 
-export default function AncestryModal({ isOpen, onClose, children }: ModalProps) {
+export default function Modal({ isOpen, onClose, children }: ModalProps) {
   if (!isOpen) return null;
 
   return createPortal(
