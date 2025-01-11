@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { ClassData } from "../Types/classTypes";
 import { classColors } from "../utils/classColors";
 import { Link, useOutletContext } from 'react-router-dom';
@@ -7,6 +7,7 @@ const classFiles = import.meta.glob('../data/classes/*.json', { eager: true });
 
 const ClassMenu = () => {
   const [expandedClass, setExpandedClass] = useState<string | null>(null);
+  const cardRefs = useRef<{ [key: string]: HTMLDivElement | null }>({});
   const { setSelectedClass } = useClassContext()
   const { filterClasses } = useOutletContext<{filterClasses: boolean}>()
   const classes: ClassData[] = Object.values(classFiles)
@@ -17,6 +18,19 @@ const ClassMenu = () => {
 
   const handleClassClick = (className: string) => {
     setExpandedClass(expandedClass === className ? null : className);
+
+    setTimeout(() => {
+      const cardElement = cardRefs.current[className];
+      if (cardElement) {
+        const elementPosition = cardElement.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.scrollY - 60;
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        })
+      }
+    }, 0)
   };
 
   // Helper function to format key ability when two are present
@@ -42,6 +56,7 @@ const removeLastPTag = (htmlString: string): string => {
         <div className="text-black flex-col">
           {classes.map((classData) => (
             <div
+              ref={el => cardRefs.current[classData.name.toLocaleLowerCase()] = el}
               key={classData.name.toLowerCase()}
               onClick={() => handleClassClick(classData.name.toLowerCase())}
               className={`
@@ -49,6 +64,7 @@ const removeLastPTag = (htmlString: string): string => {
                 p-4 bg-opacity-65
                 flex flex-col cursor-pointer
                 transition-all duration-300 ease
+                class-container max-h-[80vh] overflow-auto
                 ${expandedClass === classData.name.toLowerCase() ? 'min-h-fit' : 'h-20'}
               `}
             >
