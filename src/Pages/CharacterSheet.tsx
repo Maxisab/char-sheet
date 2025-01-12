@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useClassContext } from "../Hooks/useClassContext";
 import Modal from "../Modals/Modal";
 
-export const CharacterSheet = () => {
+const CharacterSheet = () => {
     const { selectedClass } = useClassContext();
     const [isModalOpen, setIsModalOpen] = useState(false)
 
@@ -42,3 +42,5 @@ export const CharacterSheet = () => {
     </>
   )
 }
+
+export default CharacterSheet

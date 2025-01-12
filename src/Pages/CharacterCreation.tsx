@@ -1,9 +1,13 @@
-import ClassMenu from "../Components/ClassMenu"
+import { useState } from "react"
+import { Outlet } from "react-router-dom"
+
 
 
 const CharacterCreation = () => {
+  const [filterClasses, setFilterClasses] = useState(false)
+
   return (
-    <ClassMenu />
+    <Outlet context={{ filterClasses, setFilterClasses }} />
   )
 }
 

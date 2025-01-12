@@ -1,3 +1,5 @@
+//BACKGROUND AND TEXT COLOR THEMES INCLUDED TO MAKE IT EASY TO SWITCH BETWEEN IF NEEDED
+
 // export const classColors: Record<string, string> = {
 //   alchemist: 'bg-yellow-500',
 //   barbarian: 'bg-red-500',

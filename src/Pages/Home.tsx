@@ -18,7 +18,7 @@ export const Home = () => {
           </div>
           
           <Link 
-            to="/character-creation" 
+            to="/character-creation/class" 
             className="inline-block px-6 py-3 
             bg-accent-gold 
             text-neutral-charcoal 

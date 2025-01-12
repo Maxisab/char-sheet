@@ -95,7 +95,7 @@ const removeLastPTag = (htmlString: string): string => {
                     />
                     <Link 
                       className="flex justify-center w-1/2 mx-auto py-3 text-black border-black border-4 rounded-2xl bg-white"
-                      to="/character-sheet" 
+                      to="/character-creation/ancestry" 
                       onClick={() => setSelectedClass(classData)}
                     >
                       Select Class
