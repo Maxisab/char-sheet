@@ -31,7 +31,7 @@ export const Home = () => {
             uppercase 
             tracking-wider"
           >
-            Go to Class Selection
+            Go to Character Creation
           </Link>
         </div>
       </div>

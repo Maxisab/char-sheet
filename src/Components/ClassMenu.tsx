@@ -50,21 +50,21 @@ const removeLastPTag = (htmlString: string): string => {
 };
 
   return (
-    <div className={`relative min-h-screen transition-all duration-300 ease-in-out mt-[60px] ${expandedClass ? 'lg:grid lg:grid-cols-3' : ''}`}>
+    <div className={`bg-gray-900 relative min-h-screen transition-all duration-300 ease-in-out mt-[60px] ${expandedClass ? 'lg:grid lg:grid-cols-3' : ''}`}>
       {/* Classes List */}
       <div className={`transition-all duration-300 ease-in-out ${expandedClass ? 'lg:col-span-1' : 'lg:px-[25%]'}`}>
-        <div className="text-black flex-col">
+        <div className="text-black flex-col border-separate">
           {classes.map((classData) => (
             <div
               ref={el => cardRefs.current[classData.name.toLocaleLowerCase()] = el}
               key={classData.name.toLowerCase()}
               onClick={() => handleClassClick(classData.name.toLowerCase())}
               className={`
-                ${classColors[classData.name.toLowerCase()]} 
-                p-4 bg-opacity-65
+                ${classColors[classData.name.toLowerCase()]}
+                bg-gray-900 p-4 border-t-2 rounded-t-xl border-slate-500
                 flex flex-col cursor-pointer
                 transition-all duration-300 ease
-                class-container max-h-[80vh] overflow-auto
+                class-container max-h-[80vh]
                 ${expandedClass === classData.name.toLowerCase() ? 'min-h-fit' : 'h-20'}
               `}
             >
@@ -94,7 +94,7 @@ const removeLastPTag = (htmlString: string): string => {
                       }}
                     />
                     <Link 
-                      className="flex justify-center w-1/2 mx-auto py-3 border-black border-4 rounded-2xl bg-white"
+                      className="flex justify-center w-1/2 mx-auto py-3 text-black border-black border-4 rounded-2xl bg-white"
                       to="/character-sheet" 
                       onClick={() => setSelectedClass(classData)}
                     >
