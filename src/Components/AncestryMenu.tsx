@@ -1,7 +1,13 @@
+import { useClassContext } from "../Hooks/useClassContext";
 
 const AncestryMenu = () => {
+  const { selectedClass } = useClassContext();
+
   return (
-    <div>AncestryMenu</div>
+    <div>
+      AncestryMenu
+      <p>{selectedClass?.name}</p>
+    </div>
   )
 }
 

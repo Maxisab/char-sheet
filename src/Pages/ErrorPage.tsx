@@ -1,7 +1,7 @@
 import { isRouteErrorResponse, useRouteError } from "react-router-dom"
 
 
-export const ErrorPage = () => {
+const ErrorPage = () => {
   const error = useRouteError()
   
   if (isRouteErrorResponse(error)) {
@@ -32,3 +32,5 @@ export const ErrorPage = () => {
     </div>
   )
 }
+
+export default ErrorPage

@@ -1,8 +1,8 @@
 import { createBrowserRouter } from "react-router-dom";
 import { ClassProvider } from "../Context/ClassProvider";
 import App from "../App";
-import { ErrorPage } from "../Pages/ErrorPage";
-import { Home } from "../Pages/Home";
+import ErrorPage from "../Pages/ErrorPage";
+import Home from "../Pages/Home";
 import CharacterSheet from "../Pages/CharacterSheet";
 import CharacterCreation from "../Pages/CharacterCreation";
 import SkillsMenu from "../Components/SkillsMenu";

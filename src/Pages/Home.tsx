@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
 
-export const Home = () => {
+const Home = () => {
   return (
     <div className="min-h-screen w-full bg-neutral-charcoal flex flex-col">
       <div className="flex-grow container mx-auto px-4 py-8 flex flex-col justify-center items-center text-center">
@@ -38,3 +38,5 @@ export const Home = () => {
     </div>
   )
 }
+
+export default Home
