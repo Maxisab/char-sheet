@@ -3,13 +3,14 @@ import { ClassData } from "../Types/classTypes";
 import { classColors } from "../utils/classColors";
 import { Link, useOutletContext } from 'react-router-dom';
 import { useClassContext } from '../Hooks/useClassContext';
+import { OutleContextType } from '../Types/OutletContextTypes';
 const classFiles = import.meta.glob('../data/classes/*.json', { eager: true });
 
 const ClassMenu = () => {
   const [expandedClass, setExpandedClass] = useState<string | null>(null);
   const cardRefs = useRef<{ [key: string]: HTMLDivElement | null }>({});
   const { setSelectedClass } = useClassContext()
-  const { filterClasses } = useOutletContext<{filterClasses: boolean}>()
+  const { filterClasses } = useOutletContext<OutleContextType>()
   const classes: ClassData[] = Object.values(classFiles)
     .map(file => file as ClassData)
     .filter(classData =>
