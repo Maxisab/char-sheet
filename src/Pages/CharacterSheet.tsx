@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import { useClassContext } from "../Hooks/useClassContext";
 import Modal from "../Modals/Modal";
+import { useCharacterStore } from "../Store/CharacterStore";
 
 const CharacterSheet = () => {
-    const { selectedClass } = useClassContext();
+    const selectedClass = useCharacterStore (state => state.characterSheet.class);
     const [isModalOpen, setIsModalOpen] = useState(false)
 
     useEffect(() => {
